@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+}
+.heading{
+    text-align: center;
+    margin-top: 1vw;
+    font-size: 3vh;
+    line-height: 1.6;
+}
+.heading h1 {
+    color: rgb(72, 49, 155);
+}
+.heading p{
+    font-size: 3vh;
+    font-weight: 500;
+    color: black;
+}
+nav{
+    margin-left: 10vh;
+}
+.add{
+    padding: 1vh 4vh;
+    border-radius: 1vh;
+    color: white;
+    background-color: rgb(72, 49, 155);
+    font-weight: 600;
+    font-size: medium;
+    border: none ;
+}
+main{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputmenu{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   display: none ;
+   
+
+}
+.inputcontentbox{
+   
+    background-color: rgb(255, 255, 255);
+    width: 50vh;
+    height:auto ;
+    padding: 3vh 4vh ;
+    box-shadow: 0 0 10px gray ;
+    border-radius: 15px;
+}
+.inputoform{
+    display: flex;
+    flex-direction: column;
+}
+.inputoform h2 {
+    margin-bottom: 2vh;
+}
+#titleinput{
+    padding: 10px;
+    margin: 5px 0;
+    height:35px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.42) ;
+    cursor: pointer;
+}
+#titleinput:focus{
+    /* border: 2px solid rgb(72, 49, 155) ; */
+    box-shadow: 0 0 10px rgb(72, 49, 155)  ;
+}
+#contentinput{
+
+    width: 100%;     /* take full container width */
+    height: 160px;   /* controlled height */
+    padding: 10px;
+    resize: none;    /* optional */
+    border-radius: 10px;
+     outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.42) ;
+    cursor: pointer;
+    margin: 5px 0 ;
+
+}
+#contentinput:focus{
+    /* border: 1px solid rgb(72, 49, 155) ; */
+    box-shadow: 0 0 10px rgb(72, 49, 155)  ;
+}
+
+.errormsg{
+    color: red;
+    display: none;
+    font-weight: 600;
+}
+
+#submitbtn{
+    margin-top: 1vh;
+    padding: 2vh;
+     color: white;
+    background-color: rgb(72, 49, 155);
+    font-weight: 600;
+    font-size: medium;
+    border: none ;
+    border-radius: 1vh;
+}
+#submitbtn:hover{
+    background-color: rgb(47, 36, 86) ;
+}
