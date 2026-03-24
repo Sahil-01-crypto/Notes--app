@@ -5,21 +5,27 @@ let titleinput = document.querySelector("#titleinput")
 let contentinput = document.querySelector("#contentinput")
 let submit = document.querySelector("#submitbtn")
 let errormsg = document.querySelector(".errormsg")
-
+let notecont = document.querySelector(".notcont")
 
 // fetch  the existing notes is avalable else an empty array
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
-// displayNotes();
+displayNotes();
 
 
 //when add button is  click an input menu appears
 add.addEventListener("click", function () {
-    inputmenu.style.display = "flex"
 
+    inputmenu.style.display = "flex"
+    notecont.style.display = "none"
 
 })
 form.addEventListener("submit", function (e) {
+    inputmenu.style.display="flex"
+
+  
+    notecont.style.display = "flex"
+
 
     e.preventDefault();
 
@@ -55,32 +61,60 @@ form.addEventListener("submit", function (e) {
 
 function displayNotes() {
 
-let notecont = document.querySelector(".notesecction");
-notecont.innerHTML=""
+    let notecont = document.querySelector(".notesecction");
+    notecont.innerHTML = ""
 
     notes.forEach(function (current) {
         let div = document.createElement("div")
-        div.innerHTML=`
-        <h3>${current.title}</h3>
+        div.classList.add("content-of-each-node")
+        div.innerHTML = `
+        <h3><box-icon name='edit' ></box-icon>${current.title}</h3>
         <p>${current.content}</p>
         <small>${current.createdAt}</small>
-        <button class="taskdelete"> DELETE</button> 
+        <button class="taskdelete"><box-icon type='solid' name='message-alt-x'></box-icon></button> 
+        <button class="edit"><box-icon name='edit-alt' type='solid' ></box-icon></button>
         `;
 
-        let del= div.querySelector(".taskdelete")
-         del.addEventListener("click" , function(){
-            notes = notes . filter(note=> note.id !== current.id);  // deletion logic using filter 
-            localStorage.setItem("notes" , JSON.stringify(notes));
+        let del = div.querySelector(".taskdelete")
+        del.addEventListener("click", function () {
+            div.classList.add("fadeout")
+
+            setTimeout(function() {
+                 notes = notes.filter(note => note.id !== current.id);  // deletion logic using filter 
+            localStorage.setItem("notes", JSON.stringify(notes));
 
             //re render ui 
             displayNotes();
-         })
+            }, 400);
+           
+        })
+
+
+        let edit = div.querySelector(".edit");
+        edit.addEventListener("click", function () {
+
+            let newTitle = prompt("Edit title", current.title);
+            if (newTitle === null || newTitle.trim() === "") return;
+
+            let newContent = prompt("Edit content", current.content);
+            if (newContent === null || newContent.trim() === "") return;
+
+            // update values
+            current.title = newTitle;
+            current.content = newContent;
+
+            // save
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            // refresh UI
+            displayNotes();
+        });
 
         notecont.appendChild(div)
 
-        
 
-        
+
+
     })
 
 }
