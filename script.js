@@ -24,10 +24,11 @@ form.addEventListener("submit", function (e) {
     inputmenu.style.display="flex"
 
   
-    notecont.style.display = "flex"
+ 
 
 
     e.preventDefault();
+
 
 
     // check that the input filed is empty or not 
@@ -35,8 +36,12 @@ form.addEventListener("submit", function (e) {
         errormsg.style.display = "block"
         return
     }
+     
     // if everything is okay now remove the inputmenu 
     inputmenu.style.display = "none"
+
+    // show the notes 
+      notecont.style.display = "flex"
 
     // storing the vlues in an object 
     let note = {
