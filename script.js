@@ -6,6 +6,8 @@ let contentinput = document.querySelector("#contentinput")
 let submit = document.querySelector("#submitbtn")
 let errormsg = document.querySelector(".errormsg")
 let notecont = document.querySelector(".notcont")
+let modeldelbtn= document.querySelector(".deletemodel")
+
 
 // fetch  the existing notes is avalable else an empty array
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
@@ -15,27 +17,29 @@ displayNotes();
 
 //when add button is  click an input menu appears
 add.addEventListener("click", function () {
+    inputmenu.style.display = "flex";
 
-    inputmenu.style.display = "flex"
-    notecont.style.display = "none"
-
+    setTimeout(() => {
+        inputmenu.classList.add("show");
+    }, 10);
 })
+modeldelbtn.addEventListener("click", function () {
+
+    inputmenu.classList.remove("show"); // start animation
+
+   setTimeout(() => {
+        inputmenu.style.display = "none";
+    }, 300);
+});
 form.addEventListener("submit", function (e) {
-    inputmenu.style.display="flex"
-
-  
- 
-
-
     e.preventDefault();
-
-
-
     // check that the input filed is empty or not 
     if (titleinput.value.trim() === "" || contentinput.value.trim() === "") {
         errormsg.style.display = "block"
         return
     }
+    //  error massage resseting 
+    errormsg.style.display="none"
      
     // if everything is okay now remove the inputmenu 
     inputmenu.style.display = "none"

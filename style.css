@@ -58,13 +58,30 @@ main {
 }
 
 .inputmenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;        /* 🔥 REQUIRED */
+    height: 100%;       /* 🔥 REQUIRED */
+
+    z-index: 1000;
+
     display: none;
 
+    justify-content: center;
+    align-items: center;
 
+    background-color: rgba(0, 0, 0, 0.4); /* overlay */
+
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
 }
+.inputmenu.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
 
 .inputcontentbox {
 
@@ -80,10 +97,28 @@ main {
 .inputoform {
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 
 .inputoform h2 {
     margin-bottom: 2vh;
+}
+.upper{
+    display: flex;
+    justify-content: space-between;
+}
+.deletemodel{
+    background:none;
+    border: none;
+    font-size: 2.5vh;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.3s ease ;
+}
+.deletemodel:hover{
+    transform: scale(1.1);
+    font-size: 3vh;
+    opacity: 0.6;
 }
 
 #titleinput {
@@ -219,15 +254,16 @@ main {
         
         
     }
-    .inputmenu{
-        width: 90%;
-        margin-top: 10vh;
-        margin-left: 2.5vh;
+    .inputcontentbox{
+        width: 89%;
     }
     .notesecction{
         justify-content: center;
         margin-left: 0;
 
+    }
+    .inputmenu{
+       
     }
 
 
