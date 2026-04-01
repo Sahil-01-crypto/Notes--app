@@ -28,9 +28,36 @@ body {
     font-weight: 500;
     color: black;
 }
+.searchcont {
+    width: 80%;
+    height: 15%;
+    background-color: white;
+    border: 1px solid gray;
 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.searchcont form {
+    flex: 1;   /* 🔥 takes remaining space */
+}
+
+.search {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: larger;
+    
+}
 nav {
-    margin-left: 10vh;
+    margin-top: 2vw;
+    display: flex;
+    justify-content: center;
+   
 }
 
 .add {
@@ -236,6 +263,12 @@ main {
     transform: translateX(50px);
     transition: all 0.4s ease;
 
+}
+.nonotes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
 @media (max-width: 600px) {

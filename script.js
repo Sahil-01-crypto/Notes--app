@@ -7,7 +7,14 @@ let submit = document.querySelector("#submitbtn")
 let errormsg = document.querySelector(".errormsg")
 let notecont = document.querySelector(".notcont")
 let modeldelbtn= document.querySelector(".deletemodel")
+let inp = document.querySelector(".search")
+inp.addEventListener("input" ,function(){
+    let filternotes = notes.filter(note=>{
+         return note.title.startsWith(inp.value)
 
+    })
+    displayNotes(filternotes)
+})
 
 // fetch  the existing notes is avalable else an empty array
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
@@ -68,12 +75,21 @@ form.addEventListener("submit", function (e) {
     contentinput.value = ""
 });
 
-function displayNotes() {
+function displayNotes(data=notes) {
 
     let notecont = document.querySelector(".notesecction");
     notecont.innerHTML = ""
 
-    notes.forEach(function (current) {
+    // if no notes are there 
+    if( data . length ==0){
+        document.querySelector(".nonotes").style.display="flex"
+        return 
+    }
+    else{
+         document.querySelector(".nonotes").style.display="none"
+    }
+   
+    data.forEach(function (current) {
         let div = document.createElement("div")
         div.classList.add("content-of-each-node")
         div.innerHTML = `
@@ -120,10 +136,10 @@ function displayNotes() {
         });
 
         notecont.appendChild(div)
-
-
-
-
     })
 
+
+    
+
 }
+
